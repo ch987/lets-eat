@@ -20,7 +20,6 @@ const StyledList = styled.ul`
   padding-inline-start: 0;
 
   height: auto;
-  max-height: 500px;
   width: 70%;
   overflow-y: scroll;
   overflow-x: hidden;
