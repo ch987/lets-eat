@@ -1,0 +1,40 @@
+{
+  "name": "mvp",
+  "version": "1.0.0",
+  "description": "A friendly recipe app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dev": "webpack -w",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ch987/mvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ch987/mvp/issues"
+  },
+  "homepage": "https://github.com/ch987/mvp#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "axios": "^0.22.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.4.0",
+    "jest": "^27.2.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.13",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0"
+  }
+}
