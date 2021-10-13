@@ -1,45 +1,40 @@
 import React from 'react';
-import axios from 'axios';
-import IngredientForm from './IngredientsFormComponents/IngredientForm.jsx';
-import RecipeList from './RecipeListComponents/RecipeList.jsx';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Main from './Main.jsx';
+import Home from './Home/Home.jsx';
+import Login from './Login/Login.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      recipes: [],
-      savedRecipes: [],
-    };
-    this.getRecipes = this.getRecipes.bind(this);
-    this.handleIngredients = this.handleIngredients.bind(this);
-  }
-
-  getRecipes(ingredientsList) {
-    axios
-      .get(`/recipes?ingredients=${ingredientsList}`)
-      .then(({ data }) => {
-        this.setState({
-          recipes: data,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-
-  handleIngredients(ingredientsString) {
-    this.getRecipes(ingredientsString);
-  }
-
-  render() {
-    return (
+const App = () => {
+  return (
+    <Router>
       <div>
-        <h1>Let's Eat!</h1>
-        <IngredientForm submit={this.handleIngredients} />
-        <RecipeList recipes={this.state.recipes} />
+        <ul>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='/main'>Main</Link>
+          </li>
+          <li>
+            <Link to='/login'>Login</Link>
+          </li>
+        </ul>
+
+        <hr />
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route path='/main'>
+            <Main />
+          </Route>
+          <Route path='/login'>
+            <Login />
+          </Route>
+        </Switch>
       </div>
-    );
-  }
-}
+    </Router>
+  );
+};
 
 export default App;
