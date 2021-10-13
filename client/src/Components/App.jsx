@@ -14,7 +14,7 @@ const App = () => {
             <h1>Let's Eat!</h1>
           </StyledTitle>
           <StyledTitle>
-            <h1>USERNAME</h1>
+            <h1></h1>
           </StyledTitle>
           <HeaderList>
             <HeaderLink to='/'>Home</HeaderLink>
@@ -65,8 +65,8 @@ const Container = styled.div`
 `;
 const StyledHeader = styled.div`
   top: 0;
-  background-color: rgb(255, 120, 90);
-  color: white;
+  background-color: #60ab9a;
+  color: #fcfaf9;
   height: 10%;
   display: flex;
   flex-direction: row;
@@ -85,21 +85,21 @@ const HeaderList = styled.div`
 `;
 const HeaderLink = styled(Link)`
   text-decoration: none;
-  color: white;
+  color: #fcfaf9;
   font-size: 1.5rem;
   :hover {
-    color: rgb(76, 59, 77);
+    color: #333333;
   }
 `;
 const StyledBody = styled.div`
-  background-color: rgb(244, 240, 187);
+  background-color: #fcfaf9;
   height: 75%;
   margin: 2% 15%;
   top: 10%;
 `;
 const StyledFooter = styled.div`
   bottom: 0;
-  background-color: rgb(76, 59, 77);
+  background-color: #333333;
   height: 10%;
 
   display: flex;
@@ -111,14 +111,14 @@ const StyledFooter = styled.div`
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 
-  color: white;
+  color: #fcfaf9;
   font-size: 1rem;
   a {
     text-decoration: none;
-    color: lightgrey;
+    color: #fcfaf9;
   }
   a:hover {
-    color: white;
+    color: #60ab9a;
   }
 `;
 

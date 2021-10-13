@@ -13,8 +13,9 @@ module.exports = {
       ranking: 2,
       ignore: true,
     };
-    let data = await models.list(queryParams);
-    res.send(data);
+    //let data = await models.list(queryParams);
+    //res.send(data);
+    res.send(tempdata.data);
   },
   getDetails: async (req, res) => {
     let recipeId = req.params.id;

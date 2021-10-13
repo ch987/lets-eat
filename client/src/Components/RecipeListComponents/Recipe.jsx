@@ -33,7 +33,6 @@ class Recipe extends React.Component {
       .map((detail) => Object.keys(detail)[0])
       .indexOf(this.props.recipe.id.toString());
     if (index !== -1) {
-      console.log(this.props.details[index]);
       this.setState({
         details: this.props.details[index][this.props.recipe.id],
       });
@@ -50,19 +49,26 @@ class Recipe extends React.Component {
   }
 
   render() {
-    let extendedInfo = null;
+    let extendedIngredients = null;
+    let extendedInstructions = null;
     let extendArrow = '▼';
     if (this.state.open === true && this.state.details) {
-      extendedInfo = (
-        <div>
+      if (this.state.details.extendedIngredients) {
+        extendedIngredients = (
           <IngredientsList
             ingredients={this.state.details.extendedIngredients}
           />
+        );
+      }
+      if (this.state.details.analyzedInstructions[0]) {
+        extendedInstructions = (
           <InstructionsList
             instructions={this.state.details.analyzedInstructions[0].steps}
           />
-        </div>
-      );
+        );
+      } else if (this.state.details.instructions) {
+        extendedInstructions = <div>{this.state.details.instructions}</div>;
+      }
       extendArrow = '▲';
     }
     let star = (
@@ -84,15 +90,21 @@ class Recipe extends React.Component {
     let used = null;
     let missed = null;
     let unused = null;
-    let usedIngs = this.props.recipe.usedIngredients.filter(
-      (rec) => rec[0] !== null
-    );
-    let missedIngs = this.props.recipe.missedIngredients.filter(
-      (rec) => rec[0] !== null
-    );
-    let unusedIngs = this.props.recipe.unusedIngredients.filter(
-      (rec) => rec[0] !== null
-    );
+    let usedIngs = this.props.recipe.usedIngredients
+      .filter((rec) => rec[0] !== null)
+      .map((ing) => {
+        return ing.original;
+      });
+    let missedIngs = this.props.recipe.missedIngredients
+      .filter((rec) => rec[0] !== null)
+      .map((ing) => {
+        return ing.original;
+      });
+    let unusedIngs = this.props.recipe.unusedIngredients
+      .filter((rec) => rec[0] !== null)
+      .map((ing) => {
+        return ing.original;
+      });
 
     if (usedIngs.length > 0) {
       let usedStr = usedIngs.join(', ');
@@ -117,7 +129,10 @@ class Recipe extends React.Component {
           {used}
           {missed}
           {unused}
-          {extendedInfo}
+          <Extended>
+            {extendedIngredients}
+            {extendedInstructions}
+          </Extended>
           <button onClick={this.handleMoreClick}>
             {extendArrow} More Info
           </button>
@@ -150,32 +165,37 @@ const StyledRecipeInfo = styled.div`
   width: 40%;
   padding: 2%;
 `;
+const Extended = styled.div`
+  margin: 5px;
+`;
 const StyledFavoriteButtonOn = styled.button`
-  background: rgb(244, 240, 187);
+  background: #eba16f;
   border: 2px solid;
-  border-color: #ff785a;
-  color: #ff785a;
+  border-color: #333333;
+  color: #333333;
   width: 50px;
   height: 50px;
   border-radius: 15px;
   margin: 10px;
   font-size: 2rem;
   :hover {
-    background: rgb(224, 220, 167);
+    background: #fcfaf9;
+    border-color: #5e5e5e;
+    color: #5e5e5e;
   }
 `;
 const StyledFavoriteButtonOff = styled.button`
-  background: rgb(244, 240, 187);
+  background: #f4d1ae;
   border: 2px solid;
-  border-color: rgb(135, 195, 143);
-  color: rgb(135, 195, 143);
+  border-color: #5e5e5e
+  color: #5e5e5e
   width: 50px;
   height: 50px;
   border-radius: 15px;
   margin: 10px;
   font-size: 2rem;
   :hover {
-    background: rgb(224, 220, 167);
+    background: #eba16f;
   }
 `;
 

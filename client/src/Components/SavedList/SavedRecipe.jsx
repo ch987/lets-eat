@@ -42,17 +42,17 @@ const StyledRecipeInfo = styled.div`
   padding: 2%;
 `;
 const DeleteButton = styled.button`
-  background: rgb(244, 240, 187);
+  background: #f4d1ae;
   border: 2px solid;
-  border-color: #ff785a;
-  color: #ff785a;
+  border-color: #333333;
+  color: #333333;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin: 10px;
   font-size: 2rem;
   :hover {
-    background: rgb(224, 220, 167);
+    background: #eba16f;
   }
 `;
 

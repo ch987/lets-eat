@@ -39,14 +39,14 @@ const HomePage = styled.div`
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 20px 70px;
-  background: rgba(135, 195, 143, 0.5);
-  color: rgb(34, 111, 84);
+  background: #5e5e5e;
+  color: #fcfaf9;
   font-size: 1.5rem;
   font-family: Georgia, Times, 'Times New Roman', serif;
 
   a {
     text-decoration: none;
-    color: rgb(76, 59, 77);
+    color: #333333;
   }
 `;
 

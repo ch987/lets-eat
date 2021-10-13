@@ -62,8 +62,8 @@ const LoginPage = styled.div`
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 70px;
-  background: rgba(135, 195, 143, 0.5);
-  color: rgb(34, 111, 84);
+  background: #5e5e5e;
+  color: #fcfaf9;
   font-size: 1.5rem;
   font-family: Georgia, Times, 'Times New Roman', serif;
 `;

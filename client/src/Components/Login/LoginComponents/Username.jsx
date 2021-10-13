@@ -30,14 +30,14 @@ const StyledInput = styled.input`
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 1px solid rgb(76, 59, 77);
+  border: 1px solid #333333;
   border-radius: 5px;
   height: 30px;
   width: 300px;
   margin: 0 30px;
   padding: 2px 10px;
   outline: 0;
-  background-color: whitesmoke;
+  background-color: #fcfaf9;
 `;
 
 export default Username;

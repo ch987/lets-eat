@@ -35,16 +35,13 @@ const StyledList = styled.ul`
   overflow-x: hidden;
 
   li:nth-child(odd) {
-    background: rgb(120, 180, 128);
+    background: #f3d3bd;
   }
   li:nth-child(even) {
-    background: rgb(150, 210, 158);
+    background: #eebb99;
   }
-  li:nth-child(odd):hover {
-    background: rgb(100, 160, 108);
-  }
-  li:nth-child(even):hover {
-    background: rgb(130, 190, 138);
+  li:hover {
+    background: #eba16f;
   }
 
   ::-webkit-scrollbar {
@@ -55,10 +52,10 @@ const StyledList = styled.ul`
     border-radius: 10px;
   }
   ::-webkit-scrollbar-track:hover {
-    background: rgba(150, 150, 150, 0.3);
+    background: rgba(94, 94, 94, 0.3);
   }
   ::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
+    background-color: #333333;
     border-radius: 10px;
   }
 `;

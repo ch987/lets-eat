@@ -42,20 +42,22 @@ class IngredientForm extends React.Component {
   }
 }
 
-const SearchTitle = styled.div`
-  color: rgb(76, 59, 77);
+const SearchTitle = styled.span`
+  color: #333333;
+  font-size: 1.5rem;
+  width: 10%;
 `;
 const SearchBar = styled.input`
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 1px solid rgb(76, 59, 77);
+  border: 1px solid #333333;
   border-radius: 5px;
   height: 50px;
-  width: 80%;
+  width: 70%;
   padding: 2px 20px;
   outline: 0;
-  background-color: whitesmoke;
+  background-color: #fcfaf9;
 `;
 const StyledButton = styled.button`
   -moz-box-sizing: border-box;
