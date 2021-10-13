@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 class IngredientForm extends React.Component {
   constructor(props) {
@@ -23,8 +24,8 @@ class IngredientForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>
-            <div>Ingredients: </div>
-            <input
+            <SearchTitle>Ingredients: </SearchTitle>
+            <SearchBar
               type='text'
               name='ingredients'
               value={this.state.ingredientsString}
@@ -40,5 +41,21 @@ class IngredientForm extends React.Component {
     );
   }
 }
+
+const SearchTitle = styled.div`
+  color: rgb(76, 59, 77);
+`;
+const SearchBar = styled.input`
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid rgb(76, 59, 77);
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
+  padding: 2px 20px;
+  outline: 0;
+  background-color: whitesmoke;
+`;
 
 export default IngredientForm;
