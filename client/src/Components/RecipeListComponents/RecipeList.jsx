@@ -2,7 +2,7 @@ import React from 'react';
 import Recipe from './Recipe.jsx';
 import styled from 'styled-components';
 
-const RecipeList = ({ recipes, saveRecipe, saved }) => {
+const RecipeList = ({ recipes, saveRecipe, saved, getDetails, details }) => {
   return (
     <StyledList>
       {recipes.map((recipe) => {
@@ -12,6 +12,8 @@ const RecipeList = ({ recipes, saveRecipe, saved }) => {
             recipe={recipe}
             saveRecipe={saveRecipe}
             saved={saved}
+            getDetails={getDetails}
+            details={details}
           />
         );
       })}
@@ -37,6 +39,12 @@ const StyledList = styled.ul`
   }
   li:nth-child(even) {
     background: rgb(150, 210, 158);
+  }
+  li:nth-child(odd):hover {
+    background: rgb(100, 160, 108);
+  }
+  li:nth-child(even):hover {
+    background: rgb(130, 190, 138);
   }
 
   ::-webkit-scrollbar {

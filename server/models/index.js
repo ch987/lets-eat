@@ -22,4 +22,24 @@ module.exports = {
         return;
       });
   },
+  details: (params) => {
+    return axios
+      .get(
+        `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${params.recipeId}/information?includeNutrition=${params.nutrition}`,
+        {
+          headers: {
+            'content-type': 'application/json',
+            'x-rapidapi-host': config.RAPID_API_HOST,
+            'x-rapidapi-key': config.RAPID_API_KEY,
+          },
+        }
+      )
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => {
+        console.error(err);
+        return;
+      });
+  },
 };

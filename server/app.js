@@ -9,6 +9,10 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
+app.get('/recipes/:id/information', (req, res) => {
+  controllers.getDetails(req, res);
+});
+
 app.get('/recipes', (req, res) => {
   controllers.get(req, res);
 });

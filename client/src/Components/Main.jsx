@@ -11,20 +11,37 @@ class Main extends React.Component {
     this.state = {
       recipes: [],
       savedRecipes: [],
+      ingredients: [],
+      recipeDetails: [],
     };
     this.getRecipes = this.getRecipes.bind(this);
     this.handleIngredients = this.handleIngredients.bind(this);
     this.saveRecipe = this.saveRecipe.bind(this);
     this.removeSavedRecipe = this.removeSavedRecipe.bind(this);
+    this.getRecipeDetails = this.getRecipeDetails.bind(this);
   }
 
-  getRecipes(ingredientsList) {
+  getRecipes() {
+    let ingredientsList = this.state.ingredients.join(',+');
     axios
       .get(`/recipes?ingredients=${ingredientsList}`)
       .then(({ data }) => {
         this.setState({
           recipes: data,
         });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  getRecipeDetails(id) {
+    let recipeDetailsCopy = this.state.recipeDetails.slice();
+    axios
+      .get(`/recipes/${id}/information`)
+      .then(({ data }) => {
+        recipeDetailsCopy.push({ [id]: data });
+        this.setState({ recipeDetails: recipeDetailsCopy });
       })
       .catch((err) => {
         console.error(err);
@@ -56,7 +73,12 @@ class Main extends React.Component {
   }
 
   handleIngredients(ingredientsString) {
-    this.getRecipes(ingredientsString);
+    let ingredients = ingredientsString.split(' ').join('').split(',');
+    let ingredientsCopy = this.state.ingredients.slice();
+    ingredients.forEach((ing) => ingredientsCopy.push(ing));
+    this.setState({ ingredients: ingredientsCopy }, () => {
+      this.getRecipes();
+    });
   }
 
   render() {
@@ -68,6 +90,8 @@ class Main extends React.Component {
             recipes={this.state.recipes}
             saveRecipe={this.saveRecipe}
             saved={this.state.savedRecipes}
+            getDetails={this.getRecipeDetails}
+            details={this.state.recipeDetails}
           />
           <SavedList
             saved={this.state.savedRecipes}

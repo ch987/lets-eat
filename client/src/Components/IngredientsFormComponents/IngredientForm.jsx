@@ -33,9 +33,9 @@ class IngredientForm extends React.Component {
               placeholder='Example: apples, flour, sugar'
             />
           </label>
-          <button type='submit' value='Submit'>
+          <StyledButton type='submit' value='Submit'>
             Submit
-          </button>
+          </StyledButton>
         </form>
       </div>
     );
@@ -52,10 +52,21 @@ const SearchBar = styled.input`
   border: 1px solid rgb(76, 59, 77);
   border-radius: 5px;
   height: 50px;
-  width: 100%;
+  width: 80%;
   padding: 2px 20px;
   outline: 0;
   background-color: whitesmoke;
+`;
+const StyledButton = styled.button`
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  border-radius: 5px;
+  height: 50px;
+  width: 10%;
+  padding: 2px 20px;
+  outline: 0;
 `;
 
 export default IngredientForm;
