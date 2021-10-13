@@ -12,6 +12,7 @@ class Login extends React.Component {
     };
     this.changeUsername = this.changeUsername.bind(this);
     this.changePassword = this.changePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   changeUsername(e) {
@@ -20,23 +21,28 @@ class Login extends React.Component {
   changePassword(e) {
     this.setState({ password: e.target.value });
   }
+  handleSubmit(e) {
+    e.preventDefault();
+  }
 
   render() {
     return (
       <LoginPage>
-        <form onSubmit={this.handleSubmit}>
-          <Username
-            username={this.state.username}
-            handleChange={this.changeUsername}
-          />
-          <Password
-            password={this.state.password}
-            handleChange={this.changePassword}
-          />
-          <button className='modalButton' type='submit' value='Submit'>
+        <StyledForm onSubmit={this.handleSubmit}>
+          <LoginComponents>
+            <Username
+              username={this.state.username}
+              handleChange={this.changeUsername}
+            />
+            <Password
+              password={this.state.password}
+              handleChange={this.changePassword}
+            />
+          </LoginComponents>
+          <StyledButton type='submit' value='Submit'>
             Submit
-          </button>
-        </form>
+          </StyledButton>
+        </StyledForm>
       </LoginPage>
     );
   }
@@ -45,18 +51,39 @@ class Login extends React.Component {
 const LoginPage = styled.div`
   width: 100%;
   height: 100%;
+  border-radius: 15px;
+
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
+  justify-content: flex-start;
+  align-items: center;
 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 20px 70px;
+  padding: 70px;
   background: rgba(135, 195, 143, 0.5);
   color: rgb(34, 111, 84);
   font-size: 1.5rem;
   font-family: Georgia, Times, 'Times New Roman', serif;
+`;
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+`;
+const StyledButton = styled.button`
+  height: 75px;
+  width: 75px;
+`;
+const LoginComponents = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
 `;
 
 export default Login;
