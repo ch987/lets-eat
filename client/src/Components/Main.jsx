@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import IngredientForm from './IngredientsFormComponents/IngredientForm.jsx';
 import RecipeList from './RecipeListComponents/RecipeList.jsx';
+import SavedList from './SavedList/SavedList.jsx';
 import styled from 'styled-components';
 
 class Main extends React.Component {
@@ -14,6 +15,7 @@ class Main extends React.Component {
     this.getRecipes = this.getRecipes.bind(this);
     this.handleIngredients = this.handleIngredients.bind(this);
     this.saveRecipe = this.saveRecipe.bind(this);
+    this.removeSavedRecipe = this.removeSavedRecipe.bind(this);
   }
 
   getRecipes(ingredientsList) {
@@ -30,7 +32,27 @@ class Main extends React.Component {
   }
 
   saveRecipe(recipe) {
-    console.log('saved', recipe);
+    let savedRecipesCopy = this.state.savedRecipes.slice();
+    if (savedRecipesCopy.map((obj) => obj.id).includes(recipe.id)) {
+      savedRecipesCopy = savedRecipesCopy.filter((rec) => {
+        return rec.id !== recipe.id;
+      });
+    } else {
+      savedRecipesCopy.push(recipe);
+    }
+    this.setState({
+      savedRecipes: savedRecipesCopy,
+    });
+  }
+
+  removeSavedRecipe(recipe) {
+    let savedRecipesCopy = this.state.savedRecipes.slice();
+    savedRecipesCopy = savedRecipesCopy.filter((rec) => {
+      return rec.id !== recipe.id;
+    });
+    this.setState({
+      savedRecipes: savedRecipesCopy,
+    });
   }
 
   handleIngredients(ingredientsString) {
@@ -39,51 +61,29 @@ class Main extends React.Component {
 
   render() {
     return (
-      <StyledContainer>
-        <StyledHeader className='section'>
-          <h1>Let's Eat!</h1>
-        </StyledHeader>
-        <StyledBody className='section'>
-          <IngredientForm submit={this.handleIngredients} />
+      <div>
+        <IngredientForm submit={this.handleIngredients} />
+        <Listbox>
           <RecipeList
             recipes={this.state.recipes}
             saveRecipe={this.saveRecipe}
+            saved={this.state.savedRecipes}
           />
-        </StyledBody>
-        <StyledFooter className='section'>
-          <div>this is a StyledFooter</div>
-        </StyledFooter>
-      </StyledContainer>
+          <SavedList
+            saved={this.state.savedRecipes}
+            remove={this.removeSavedRecipe}
+          />
+        </Listbox>
+      </div>
     );
   }
 }
 
-const StyledContainer = styled.div`
+const Listbox = styled.div`
   display: flex;
-  flex-direction: column;
-  .section {
-    position: fixed;
-    width: 100%;
-    left: 0;
-  }
-`;
-const StyledHeader = styled.div`
-  top: 0;
-  background-color: rgb(255, 120, 90);
-  color: white;
-  height: 10%;
-`;
-const StyledBody = styled.div`
-  background-color: white;
-  height: 70%;
-  padding: 5% 10%;
-  top: 10%;
-`;
-const StyledFooter = styled.div`
-  bottom: 0;
-  background-color: rgb(76, 59, 77);
-  color: white;
-  height: 10%;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export default Main;
