@@ -19,6 +19,7 @@ class Main extends React.Component {
     this.saveRecipe = this.saveRecipe.bind(this);
     this.removeSavedRecipe = this.removeSavedRecipe.bind(this);
     this.getRecipeDetails = this.getRecipeDetails.bind(this);
+    this.addRecipe = this.addRecipe.bind(this);
   }
 
   getRecipes() {
@@ -72,6 +73,20 @@ class Main extends React.Component {
     });
   }
 
+  addRecipe(recipe) {
+    let recipesCopy = this.state.recipes.slice();
+    let index = recipesCopy.map((rec) => rec.id).indexOf(recipe.id);
+    if (index === -1) {
+      recipesCopy.unshift(recipe);
+    } else {
+      recipesCopy.splice(index, 1);
+      recipesCopy.unshift(recipe);
+    }
+    this.setState({
+      recipes: recipesCopy,
+    });
+  }
+
   handleIngredients(ingredientsString) {
     let ingredients = ingredientsString.split(' ').join('').split(',');
     let ingredientsCopy = this.state.ingredients.slice();
@@ -96,6 +111,7 @@ class Main extends React.Component {
           <SavedList
             saved={this.state.savedRecipes}
             remove={this.removeSavedRecipe}
+            add={this.addRecipe}
           />
         </Listbox>
       </div>

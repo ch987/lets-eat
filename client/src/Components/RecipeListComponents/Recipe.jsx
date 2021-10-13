@@ -1,6 +1,7 @@
 import React from 'react';
 import IngredientsList from './IngredientsList.jsx';
 import InstructionsList from './InstructionsList.jsx';
+import Source from './Source.jsx';
 import styled from 'styled-components';
 
 class Recipe extends React.Component {
@@ -42,6 +43,7 @@ class Recipe extends React.Component {
   componentDidMount() {
     this.checkOpened();
   }
+
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       this.checkOpened();
@@ -51,6 +53,7 @@ class Recipe extends React.Component {
   render() {
     let extendedIngredients = null;
     let extendedInstructions = null;
+    let sourceURL = null;
     let extendArrow = '▼';
     if (this.state.open === true && this.state.details) {
       if (this.state.details.extendedIngredients) {
@@ -68,6 +71,14 @@ class Recipe extends React.Component {
         );
       } else if (this.state.details.instructions) {
         extendedInstructions = <div>{this.state.details.instructions}</div>;
+      }
+      if (this.state.details.sourceUrl) {
+        sourceURL = (
+          <Source
+            url={this.state.details.sourceUrl}
+            name={this.state.details.sourceName}
+          />
+        );
       }
       extendArrow = '▲';
     }
@@ -132,6 +143,7 @@ class Recipe extends React.Component {
           <Extended>
             {extendedIngredients}
             {extendedInstructions}
+            {sourceURL}
           </Extended>
           <button onClick={this.handleMoreClick}>
             {extendArrow} More Info
@@ -169,7 +181,7 @@ const Extended = styled.div`
   margin: 5px;
 `;
 const StyledFavoriteButtonOn = styled.button`
-  background: #eba16f;
+  background: #60ab9a;
   border: 2px solid;
   border-color: #333333;
   color: #333333;
@@ -195,7 +207,7 @@ const StyledFavoriteButtonOff = styled.button`
   margin: 10px;
   font-size: 2rem;
   :hover {
-    background: #eba16f;
+    background: #60ab9a;
   }
 `;
 

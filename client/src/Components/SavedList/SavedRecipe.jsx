@@ -1,18 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SavedRecipe = ({ recipe, remove }) => {
-  const handleClick = (e) => {
+const SavedRecipe = ({ recipe, remove, add }) => {
+  const handleRemoveClick = (e) => {
     remove(recipe);
   };
 
+  const handleClick = () => {
+    add(recipe);
+  };
+
   return (
-    <StyledRecipeTile>
+    <StyledRecipeTile onClick={handleClick}>
       <StyledImage src={recipe.image} alt={recipe.image} />
       <StyledRecipeInfo>
         <div>{recipe.title}</div>
       </StyledRecipeInfo>
-      <DeleteButton onClick={handleClick}></DeleteButton>
+      <DeleteButton onClick={handleRemoveClick}></DeleteButton>
     </StyledRecipeTile>
   );
 };
@@ -46,13 +50,13 @@ const DeleteButton = styled.button`
   border: 2px solid;
   border-color: #333333;
   color: #333333;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   margin: 10px;
   font-size: 2rem;
   :hover {
-    background: #eba16f;
+    background: #60ab9a;
   }
 `;
 

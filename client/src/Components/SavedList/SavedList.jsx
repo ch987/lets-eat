@@ -2,11 +2,18 @@ import React from 'react';
 import SavedRecipe from './SavedRecipe.jsx';
 import styled from 'styled-components';
 
-const SavedList = ({ saved, remove }) => {
+const SavedList = ({ saved, remove, add }) => {
   return (
     <StyledList>
       {saved.map((recipe) => {
-        return <SavedRecipe key={recipe.id} recipe={recipe} remove={remove} />;
+        return (
+          <SavedRecipe
+            key={recipe.id}
+            recipe={recipe}
+            remove={remove}
+            add={add}
+          />
+        );
       })}
     </StyledList>
   );

@@ -65,7 +65,7 @@ const Container = styled.div`
 `;
 const StyledHeader = styled.div`
   top: 0;
-  background-color: #60ab9a;
+  background-color: #333333;
   color: #fcfaf9;
   height: 10%;
   display: flex;
@@ -88,7 +88,7 @@ const HeaderLink = styled(Link)`
   color: #fcfaf9;
   font-size: 1.5rem;
   :hover {
-    color: #333333;
+    color: #60ab9a;
   }
 `;
 const StyledBody = styled.div`
