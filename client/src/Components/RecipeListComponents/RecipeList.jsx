@@ -2,12 +2,17 @@ import React from 'react';
 import Recipe from './Recipe.jsx';
 import styled from 'styled-components';
 
-const RecipeList = ({ recipes, saveRecipe }) => {
+const RecipeList = ({ recipes, saveRecipe, saved }) => {
   return (
     <StyledList>
       {recipes.map((recipe) => {
         return (
-          <Recipe key={recipe.id} recipe={recipe} saveRecipe={saveRecipe} />
+          <Recipe
+            key={recipe.id}
+            recipe={recipe}
+            saveRecipe={saveRecipe}
+            saved={saved}
+          />
         );
       })}
     </StyledList>
@@ -23,7 +28,7 @@ const StyledList = styled.ul`
 
   height: auto;
   max-height: 70vh;
-  width: 50%;
+  width: 65%;
   overflow-y: scroll;
   overflow-x: hidden;
 

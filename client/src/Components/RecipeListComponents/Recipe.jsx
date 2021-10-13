@@ -1,12 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Recipe = ({ recipe, saveRecipe }) => {
-  console.log(recipe);
-
+const Recipe = ({ recipe, saveRecipe, saved }) => {
   const handleClick = (e) => {
     saveRecipe(recipe);
   };
+
+  let star = (
+    <StyledFavoriteButtonOff onClick={handleClick}>☆</StyledFavoriteButtonOff>
+  );
+  if (saved.map((recipe) => recipe.id).includes(recipe.id)) {
+    star = (
+      <StyledFavoriteButtonOn onClick={handleClick}>★</StyledFavoriteButtonOn>
+    );
+  }
 
   return (
     <StyledRecipeTile>
@@ -15,7 +22,7 @@ const Recipe = ({ recipe, saveRecipe }) => {
         <div>{recipe.title}</div>
         <button>More Details</button>
       </StyledRecipeInfo>
-      <StyledFavoriteButton onClick={handleClick}></StyledFavoriteButton>
+      {star}
     </StyledRecipeTile>
   );
 };
@@ -41,12 +48,33 @@ const StyledRecipeInfo = styled.div`
   width: 40%;
   padding: 2%;
 `;
-const StyledFavoriteButton = styled.button`
+const StyledFavoriteButtonOn = styled.button`
   background: rgb(244, 240, 187);
+  border: 2px solid;
+  border-color: #ff785a;
+  color: #ff785a;
   width: 50px;
   height: 50px;
   border-radius: 15px;
   margin: 10px;
+  font-size: 2rem;
+  :hover {
+    background: rgb(224, 220, 167);
+  }
+`;
+const StyledFavoriteButtonOff = styled.button`
+  background: rgb(244, 240, 187);
+  border: 2px solid;
+  border-color: rgb(135, 195, 143);
+  color: rgb(135, 195, 143);
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  margin: 10px;
+  font-size: 2rem;
+  :hover {
+    background: rgb(224, 220, 167);
+  }
 `;
 
 export default Recipe;
