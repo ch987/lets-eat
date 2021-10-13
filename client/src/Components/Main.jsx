@@ -27,6 +27,7 @@ class Main extends React.Component {
     axios
       .get(`/recipes?ingredients=${ingredientsList}`)
       .then(({ data }) => {
+        console.log(data);
         this.setState({
           recipes: data,
         });
@@ -97,6 +98,7 @@ class Main extends React.Component {
   }
 
   render() {
+    console.log(this.state.recipes);
     return (
       <div>
         <IngredientForm submit={this.handleIngredients} />
