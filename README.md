@@ -8,13 +8,13 @@ This is a simple meal suggestion application that will give you some meal ideas 
 
 Using this app is easy. Just type in each ingredient you want to cook with, and click submit! We'll return the best results we can find right back to you!
 
-This page runs on the Spoonacular API (https://spoonacular.com/food-api)
-
 ## Tech Stack
 
 ![React][ReactBadge]
 ![Node.js][NodeBadge]
 ![Express.js][ExpressBadge]
+
+This page runs on the Spoonacular API (https://spoonacular.com/food-api)
 
 ## Authors
 
