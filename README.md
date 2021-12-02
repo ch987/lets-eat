@@ -14,7 +14,7 @@ Using this app is easy. Just type in each ingredient you want to cook with, and 
 ![Node.js][NodeBadge]
 ![Express.js][ExpressBadge]
 
-This page runs on the Spoonacular API (https://spoonacular.com/food-api)
+This page runs on the [Spoonacular API](https://spoonacular.com/food-api)
 
 ## Authors
 
